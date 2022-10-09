@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="flask_message">
+        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+        {% if messages %}                            <!-- check if there are any messages -->
+                {% for message in messages %}            <!-- loop through the messages -->
+                    <p class="alert alert-danger" role="alert">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    <div class="row" style="color: blueviolet; margin: 20px 0px 0px 10px;"> <h2>Recipe Share</h2></div>
+    <div class="row" style="margin: 10px;">
+    <div class="col">
+        <h3>Register</h3>
+        <form action="/register" method="post">
+            <input type="hidden" name="usuario" value="sent">
+            <div class="form-group">
+                <label for="first_name">First Name</label>
+                <small class="form-text text-muted">(Campo obligatorio)</small>
+                <input type="text" name="first_name" class="form-control" required>
+                
+            </div>
+            <div class="form-group">
+                <label for="last_name">Last Name</label> 
+                <small class="form-text text-muted">(Campo obligatorio)</small>
+                <input type="text" name="last_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <small class="form-text text-muted">(Campo obligatorio)</small>
+                <input type="text"name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <small class="form-text text-muted">(Campo obligatorio)</small>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="conf_pw">Confirme Password</label>
+                <small class="form-text text-muted">(Campo obligatorio)</small>
+                <input type="password" name="conf_pw" class="form-control" required>
+            </div>
+            <br>
+            <div class = "form-group">
+                <label for="gen">Indique su genero</label>
+                <br>
+                <input type="radio" name="gen" value="fem" checked="checked">
+                <label for="NoInf">Prefiero no informar</label>
+                <input type="radio" name="gen" value="fem">
+                <label for="fem">Femenino</label>
+                <input type="radio" name="gen" value="masc">
+                <label for="masc">Masculino</label>
+                <input type="radio" name="gen" value="otro">
+                <label for="otro">Otro</label>
+            </div>
+            <br>
+            <div class = "form-group">
+                <label for="birthday">Fecha de nacimiento:</label>
+                <input type="date" id="birthday" name="birthday" required>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+    <div class="col">
+        <h3>Login</h3>
+        <form action="/login" method="post">
+            <input type="hidden" name="usuario" value="sent">
+            <div class="form-group">
+                <label for="log_email">Email</label>
+                <input type="text" name="log_email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="log_password">Password</label>
+                <input type="password" name="log_password" class="form-control">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+    </div>
+</body>
+</html>
